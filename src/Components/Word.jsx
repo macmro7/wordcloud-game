@@ -1,8 +1,13 @@
 function Word(props) {
-    const { word } = props
+    const { word, positionX, positionY } = props
 
+    console.log(positionX, positionY)
     return (
-        <h1>{ word }</h1>
+        <h1
+            style={{gridColumn: positionX, gridRow: positionY}}
+        >
+            { word }
+        </h1>
     )
 }
 
