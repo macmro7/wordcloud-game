@@ -1,7 +1,8 @@
+function Word(props) {
+    const { word } = props
 
-function Word() {
     return (
-        <h1>word</h1>
+        <h1>{ word }</h1>
     )
 }
 
