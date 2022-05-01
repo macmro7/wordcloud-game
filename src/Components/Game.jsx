@@ -1,8 +1,10 @@
-import Board from './Board'
+import { useState } from 'react'
 import data from '../data.json'
+import Board from './Board'
+import generatePositions from './positions'
 
 function Game() {
-    console.log(data.all_words)
+    const [ positions, setPositions ] = useState(generatePositions(data))
 
     return (
         <>
@@ -10,6 +12,7 @@ function Game() {
             <Board
                 all_words={ data.all_words }
                 good_words={ data.good_words }
+                positions={ positions }
             />
         </>
     )
