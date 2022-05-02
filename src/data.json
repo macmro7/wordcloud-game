@@ -23,7 +23,7 @@
     {
        "question": "select colors",
        "all_words": [
-           "jeans",
+            "jeans",
             "existence",
             "ink", 
             "red",
@@ -60,7 +60,8 @@
         ],
         "good_words": [
             "car", 
-            "bus"
+            "bus",
+            "train"
         ]
     }
 ]
