@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Board from './Board'
 import Login from './Login'
 import ScoreBoard from './ScoreBoard'
@@ -26,7 +26,7 @@ function Game(props) {
 
     return (
         <>
-            { nickname == '' ?
+            { nickname === '' ?
                 <Login
                     updateNickname={ updateNickname }
                 />

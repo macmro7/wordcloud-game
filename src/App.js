@@ -8,13 +8,10 @@ function App() {
   const [ data, setData ] = useState()
 
   useEffect(() => {
-    let x = Math.floor((Math.random() * dataArray.length)).toString()
-    console.log(x)
+    let x = Math.floor((Math.random() * dataArray.length))
     setData(dataArray[x])
-  }, [dataArray])
+  }, [])
   
-  console.log('data')
-  console.log(data)
   return (
     <div className="App">
       { data && 

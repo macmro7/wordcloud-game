@@ -25,7 +25,6 @@ function Login(props) {
                 />
                 <button
                     className="continue--button"
-                    // onSubmit={ handleSubmit }
                 >
                     play
                 </button>

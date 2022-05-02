@@ -4,7 +4,6 @@ import Word from './Word'
 function Board(props) {
     const { all_words, good_words, positions, updateScore, updateIsFinished } = props
     const [ selectedWords, setSelectedWords ] = useState([])
-    const [ isActive, setIsActive ] = useState([])
     const [ answers, setAnswers ] = useState([])
 
     function handleClick(i) {
@@ -12,7 +11,7 @@ function Board(props) {
         let updatedTimers
 
         if (selectedWords.includes(newWord)) {
-            updatedTimers = selectedWords.filter((word) => word != newWord)
+            updatedTimers = selectedWords.filter((word) => word !== newWord)
             setSelectedWords(updatedTimers)
         }
         else {
@@ -55,8 +54,6 @@ function Board(props) {
         })
         
         setAnswers(checked)
-        // console.log(missed)
-        // console.log(correct.length, incorrect.length, missed.length)
         calculateScore(correct.length, incorrect.length, missed.length)
     }
 
@@ -77,14 +74,12 @@ function Board(props) {
                             word={ word }
                             onClick={() => handleClick(index) }
                             isSelected={ selectedWords.includes(word) ? true : false }
-                            // isCorrect={ correct.includes(word) ? true : false }
-                            // isIncorrect={ correct.includes(word) ? true : false }
                             isCorrect={ answers[index] }
                         />
                     </li> 
                 )}
             </ul>
-            { answers.length == 0 ? 
+            { answers.length === 0 ? 
                 <button 
                     className="continue--button"
                     onClick={ checkAnswers }

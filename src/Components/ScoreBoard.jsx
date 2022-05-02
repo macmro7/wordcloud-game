@@ -1,4 +1,3 @@
-
 function ScoreBoard(props) {
     const { score, nickname } = props
 
