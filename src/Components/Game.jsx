@@ -6,7 +6,7 @@ import generatePositions from './positions'
 
 function Game(props) {
     const { data } = props
-    const [ positions, setPositions ] = useState(generatePositions(data))
+    const [ positions ] = useState(generatePositions(data))
     const [ score, setScore ] = useState()
     const [ nickname, setNickname ] = useState('')
     const [ isFinished, setIsFinished ] = useState(false)
