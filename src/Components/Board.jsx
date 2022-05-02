@@ -65,8 +65,6 @@ function Board(props) {
         updateScore(score)
     }
 
-    console.log(answers.length)
-
     return (
         <div className="board">
             <ul className="words">

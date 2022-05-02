@@ -24,37 +24,30 @@ function Game() {
         setIsFinished(true)
     }
 
-    console.log(isFinished)
-
     return (
         <>
-            { nickname == '' ? 
+            { nickname == '' ?
                 <Login
                     updateNickname={ updateNickname }
                 />
-                :
+                :   
                 isFinished ?
                     <ScoreBoard
                         score={ score }
                         nickname={ nickname }
                     />
                     :
-                    <Board
-                        all_words={ data.all_words }
-                        good_words={ data.good_words }
-                        positions={ positions }
-                        updateScore={ updateScore }
-                        updateIsFinished={ updateIsFinished }
-                    />
+                    <div className="game">
+                        <h1 className="message">{ data.question} </h1>
+                        <Board
+                            all_words={ data.all_words }
+                            good_words={ data.good_words }
+                            positions={ positions }
+                            updateScore={ updateScore }
+                            updateIsFinished={ updateIsFinished }
+                        />  
+                    </div>
             }
-            {/* <h1>{ data.question } </h1>
-            <Board
-                all_words={ data.all_words }
-                good_words={ data.good_words }
-                positions={ positions }
-                updateScore={ updateScore }
-            />
-            { score } */}
         </>
     )
 }
