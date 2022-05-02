@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import data from '../data.json'
+import { useState, useEffect } from 'react'
 import Board from './Board'
 import Login from './Login'
 import ScoreBoard from './ScoreBoard'
 import generatePositions from './positions'
 
-function Game() {
+function Game(props) {
+    const { data } = props
     const [ positions, setPositions ] = useState(generatePositions(data))
     const [ score, setScore ] = useState()
     const [ nickname, setNickname ] = useState('')
