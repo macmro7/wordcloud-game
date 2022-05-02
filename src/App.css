@@ -1,8 +1,8 @@
 .App {
-  /* text-align: center; */
+  text-align: center;
 }
 
-.board {
+.words {
   margin-left: auto;
   margin-right: auto;
   border: 1px solid;
@@ -11,11 +11,63 @@
   height: 400px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(20, 1fr);
+  grid-template-rows: repeat(9, 1fr);
   gap: 1em;
 }
 
-.board li {
-  font-size: 8px;
+.words li {
   list-style: none;
+  display: flex;
+}
+
+.words li span:hover {
+  /* color: rgb(165, 165, 165); */
+  transform: translateY(-1px);
+  transition: 0.1s;
+}
+
+.words li span {
+  display: flex;
+  position: relative;
+
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.selected {
+  color: rgb(165, 165, 165);
+}
+
+.non-selected {
+  color: black;
+}
+
+.correct {
+  color: green;
+}
+
+.correct::before {
+  position: absolute;
+  content: "Good";
+  color: rgb(90, 173, 90);
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+.incorrect {
+  color: red;
+}
+
+.incorrect::before {
+  position: absolute;
+  content: "Bad";
+  color: rgb(255, 134, 134);
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+
+::selection {
+  background: none;
 }

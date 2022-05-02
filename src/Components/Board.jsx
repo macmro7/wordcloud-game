@@ -66,24 +66,26 @@ function Board(props) {
     }
 
     return (
-        <ul className="board">
-            {all_words.map((word, index) =>
-                <li 
-                    key={ word }
-                    style={{gridColumn: positions[index].slice(0, 1), gridRow: positions[index].slice(1, 2)}}
-                >
-                    <Word
-                        word={ word }
-                        onClick={() => handleClick(index) }
-                        isSelected={ selectedWords.includes(word) ? true : false }
-                        // isCorrect={ correct.includes(word) ? true : false }
-                        // isIncorrect={ correct.includes(word) ? true : false }
-                        isCorrect={ answers[index] }
-                    />
-                </li> 
-            )}
+        <div className="board">
+            <ul className="words">
+                {all_words.map((word, index) =>
+                    <li 
+                        key={ word }
+                        style={{gridColumn: positions[index].slice(0, 1), gridRow: positions[index].slice(1, 2)}}
+                    >
+                        <Word
+                            word={ word }
+                            onClick={() => handleClick(index) }
+                            isSelected={ selectedWords.includes(word) ? true : false }
+                            // isCorrect={ correct.includes(word) ? true : false }
+                            // isIncorrect={ correct.includes(word) ? true : false }
+                            isCorrect={ answers[index] }
+                        />
+                    </li> 
+                )}
+            </ul>
             <button onClick={ checkAnswers }>Check answers</button>
-        </ul>
+        </div>
     )
 }
 
