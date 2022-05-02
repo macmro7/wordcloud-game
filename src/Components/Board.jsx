@@ -2,11 +2,10 @@ import { useState } from 'react'
 import Word from './Word'
 
 function Board(props) {
-    const { all_words, good_words, positions } = props
+    const { all_words, good_words, positions, updateScore } = props
     const [ selectedWords, setSelectedWords ] = useState([])
     const [ isActive, setIsActive ] = useState([])
     const [ answers, setAnswers ] = useState([])
-    const [ score, setScore ] = useState([])
 
     function handleClick(i) {
         let newWord = all_words[i]
@@ -62,9 +61,8 @@ function Board(props) {
     }
 
     function calculateScore(correct, incorrect, missed) {
-        let scoreInit = correct * 2 - (incorrect + missed)
-
-        setScore(scoreInit)
+        let score = correct * 2 - (incorrect + missed)
+        updateScore(score)
     }
 
     return (

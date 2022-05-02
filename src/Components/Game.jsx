@@ -5,6 +5,11 @@ import generatePositions from './positions'
 
 function Game() {
     const [ positions, setPositions ] = useState(generatePositions(data))
+    const [ score, setScore ] = useState(0)
+
+    function updateScore(calculatedScore) {
+        setScore(calculatedScore)
+    }
 
     return (
         <>
@@ -13,7 +18,9 @@ function Game() {
                 all_words={ data.all_words }
                 good_words={ data.good_words }
                 positions={ positions }
+                updateScore={ updateScore }
             />
+            { score }
         </>
     )
 }
