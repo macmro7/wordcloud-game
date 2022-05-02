@@ -2,12 +2,14 @@ import { useState } from 'react'
 import data from '../data.json'
 import Board from './Board'
 import Login from './Login'
+import ScoreBoard from './ScoreBoard'
 import generatePositions from './positions'
 
 function Game() {
     const [ positions, setPositions ] = useState(generatePositions(data))
-    const [ score, setScore ] = useState(0)
+    const [ score, setScore ] = useState()
     const [ nickname, setNickname ] = useState('')
+    const [ isFinished, setIsFinished ] = useState(false)
 
     function updateScore(calculatedScore) {
         setScore(calculatedScore)
@@ -17,6 +19,13 @@ function Game() {
         setNickname(name)
     }
 
+    function updateIsFinished() {
+        console.log('updated')
+        setIsFinished(true)
+    }
+
+    console.log(isFinished)
+
     return (
         <>
             { nickname == '' ? 
@@ -24,12 +33,19 @@ function Game() {
                     updateNickname={ updateNickname }
                 />
                 :
-                <Board
-                all_words={ data.all_words }
-                good_words={ data.good_words }
-                positions={ positions }
-                updateScore={ updateScore }
-                />
+                isFinished ?
+                    <ScoreBoard
+                        score={ score }
+                        nickname={ nickname }
+                    />
+                    :
+                    <Board
+                        all_words={ data.all_words }
+                        good_words={ data.good_words }
+                        positions={ positions }
+                        updateScore={ updateScore }
+                        updateIsFinished={ updateIsFinished }
+                    />
             }
             {/* <h1>{ data.question } </h1>
             <Board

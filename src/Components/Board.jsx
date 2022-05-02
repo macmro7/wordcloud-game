@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Word from './Word'
 
 function Board(props) {
-    const { all_words, good_words, positions, updateScore } = props
+    const { all_words, good_words, positions, updateScore, updateIsFinished } = props
     const [ selectedWords, setSelectedWords ] = useState([])
     const [ isActive, setIsActive ] = useState([])
     const [ answers, setAnswers ] = useState([])
@@ -55,8 +55,8 @@ function Board(props) {
         })
         
         setAnswers(checked)
-        console.log(missed)
-        console.log(correct.length, incorrect.length, missed.length)
+        // console.log(missed)
+        // console.log(correct.length, incorrect.length, missed.length)
         calculateScore(correct.length, incorrect.length, missed.length)
     }
 
@@ -64,6 +64,8 @@ function Board(props) {
         let score = correct * 2 - (incorrect + missed)
         updateScore(score)
     }
+
+    console.log(answers.length)
 
     return (
         <div className="board">
@@ -84,12 +86,21 @@ function Board(props) {
                     </li> 
                 )}
             </ul>
-            <button 
-                className="continue--button"
-                onClick={ checkAnswers }
-            >
-                Check answers
-            </button>
+            { answers.length == 0 ? 
+                <button 
+                    className="continue--button"
+                    onClick={ checkAnswers }
+                >
+                    Check answers
+                </button>
+                :
+                <button 
+                    className="continue--button"
+                    onClick={ updateIsFinished }
+                >
+                    finish game
+                </button>
+            }
         </div>
     )
 }

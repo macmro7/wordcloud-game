@@ -6,11 +6,9 @@ function Login(props) {
 
     function handleChange(e) {
         setInput(e.target.value)
-        console.log(input)
     }
 
     function handleSubmit(event) {
-        console.log('ej')
         event.preventDefault()
         updateNickname(input)
     }
