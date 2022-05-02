@@ -4,6 +4,9 @@ import Word from './Word'
 function Board(props) {
     const { all_words, good_words, positions } = props
     const [ selectedWords, setSelectedWords ] = useState([])
+    const [ isActive, setIsActive ] = useState([])
+    const [ answers, setAnswers ] = useState([])
+    const [ score, setScore ] = useState([])
 
     function handleClick(i) {
         let newWord = all_words[i]
@@ -21,10 +24,51 @@ function Board(props) {
         }
     }
 
-    console.log(selectedWords)
+    function checkAnswers() {
+        let correct = []
+        let incorrect = []
+        selectedWords.forEach(word => {     // check whether the selected word is correct or incorrect
+            if(good_words.includes(word)) {
+                correct.push(word)
+            }
+            else {
+                incorrect.push(word)
+            }
+        })
+
+        let checked = []
+        all_words.forEach(word => {     // combine answers into one array
+            if(correct.includes(word)) {
+                checked.push('correct')
+            }
+            else if(incorrect.includes(word)) {
+                checked.push('incorrect')
+            }
+            else {
+                checked.push(null)
+            }
+        })
+
+        let missed = []
+        all_words.forEach((word, index) => {    // find missed words
+            if(good_words.includes(word) && checked[index] == null)
+                missed.push(word)
+        })
+        
+        setAnswers(checked)
+        console.log(missed)
+        console.log(correct.length, incorrect.length, missed.length)
+        calculateScore(correct.length, incorrect.length, missed.length)
+    }
+
+    function calculateScore(correct, incorrect, missed) {
+        let scoreInit = correct * 2 - (incorrect + missed)
+
+        setScore(scoreInit)
+    }
 
     return (
-        <div className="board">
+        <ul className="board">
             {all_words.map((word, index) =>
                 <li 
                     key={ word }
@@ -32,13 +76,16 @@ function Board(props) {
                 >
                     <Word
                         word={ word }
-                        positionX={ positions[index].slice(0, 1) }
-                        positionY={ positions[index].slice(1, 2)}
                         onClick={() => handleClick(index) }
+                        isSelected={ selectedWords.includes(word) ? true : false }
+                        // isCorrect={ correct.includes(word) ? true : false }
+                        // isIncorrect={ correct.includes(word) ? true : false }
+                        isCorrect={ answers[index] }
                     />
                 </li> 
             )}
-        </div>
+            <button onClick={ checkAnswers }>Check answers</button>
+        </ul>
     )
 }
 

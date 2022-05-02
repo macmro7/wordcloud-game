@@ -1,9 +1,9 @@
 function Word(props) {
-    const { word, positionX, positionY, onClick } = props
+    const { word, onClick, isSelected, isCorrect } = props
 
     return (
         <span // button?
-            style={{gridColumn: positionX, gridRow: positionY}}
+            className={ isSelected ? `selected ${isCorrect}` : 'non-selected'}
             onClick={ onClick }
         >
             { word }
