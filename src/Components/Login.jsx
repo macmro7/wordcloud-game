@@ -26,7 +26,7 @@ function Login(props) {
                 <button
                     className="continue--button"
                 >
-                    play
+                    Play
                 </button>
             </form>
         </div>

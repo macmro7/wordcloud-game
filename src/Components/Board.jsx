@@ -91,7 +91,7 @@ function Board(props) {
                     className="continue--button"
                     onClick={ updateIsFinished }
                 >
-                    finish game
+                    Finish game
                 </button>
             }
         </div>
