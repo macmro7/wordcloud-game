@@ -84,7 +84,12 @@ function Board(props) {
                     </li> 
                 )}
             </ul>
-            <button onClick={ checkAnswers }>Check answers</button>
+            <button 
+                className="continue--button"
+                onClick={ checkAnswers }
+            >
+                Check answers
+            </button>
         </div>
     )
 }
