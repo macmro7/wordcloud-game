@@ -1,13 +1,13 @@
 function Word(props) {
-    const { word, positionX, positionY } = props
+    const { word, positionX, positionY, onClick } = props
 
-    console.log(positionX, positionY)
     return (
-        <h1
+        <span // button?
             style={{gridColumn: positionX, gridRow: positionY}}
+            onClick={ onClick }
         >
             { word }
-        </h1>
+        </span>
     )
 }
 
