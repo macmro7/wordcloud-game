@@ -20,7 +20,6 @@ function Game(props) {
     }
 
     function updateIsFinished() {
-        console.log('updated')
         setIsFinished(true)
     }
 
