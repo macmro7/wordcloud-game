@@ -15,7 +15,6 @@
   display: flex;
   flex-direction: column;
   margin-top: 3em;
-  /* justify-content: center; */
   align-items: center;
   gap: 2em;
 }
@@ -23,8 +22,6 @@
 .login input {
   padding: 1em;
   width: 20em;
-  /* margin-left
-  display: block; */
 }
 
 .message {
@@ -32,16 +29,19 @@
 }
 
 .words {
+  display: grid;
+
+  padding: 4em;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid;
-  padding: 4em;
+
   width: 600px;
   height: 400px;
-  display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(9, 1fr);
+
   gap: 1em;
+  border: 1px solid;
 }
 
 .words li {
@@ -138,3 +138,12 @@
 ::selection {
   background: none;
 }
+
+@media (max-width: 600px) {
+  .words {
+    width: 250px;
+    height: 400px;
+    grid-template-columns: repeat(4, 30px);
+    grid-template-rows: repeat(8, 1fr);
+  }
+} 
