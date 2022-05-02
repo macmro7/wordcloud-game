@@ -1,5 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
+}
+
+.login {
+  margin-top: 4em;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3em;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 2em;
+}
+
+.login input {
+  padding: 1em;
+  width: 20em;
+  /* margin-left
+  display: block; */
 }
 
 .words {
